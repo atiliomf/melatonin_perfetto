@@ -122,15 +122,9 @@ private:
             AudioProcessor::processBlock
     */
 
-// Guarantee consteval where possible
-#if __cplusplus >= 202002L
-    #define MELATONIN_CONSTEVAL consteval
-#else
-    #define MELATONIN_CONSTEVAL constexpr
-#endif
 
 template <auto N>
-MELATONIN_CONSTEVAL auto class_and_method_name (char const (&src)[N])
+constexpr auto class_and_method_name (char const (&src)[N])
 {
     std::array<char, N> res = {};
     for (size_t i = 0; i < N; ++i)
